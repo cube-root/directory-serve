@@ -10,4 +10,5 @@ const handler = (req, res, { path } = {}) => {
     }
     return directory(req, res, { path })
 }
+
 module.exports = handler

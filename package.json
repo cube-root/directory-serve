@@ -1,5 +1,5 @@
 {
-  "name": "file-sharing",
+  "name": "serve-dir",
   "version": "1.0.0",
   "description": "Command line tool to serve the directory",
   "main": "src/index.js",
