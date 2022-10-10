@@ -1,7 +1,10 @@
 name: Publish to NPM
 on:
-  release:
-    types: [created]
+  push:
+    branches:
+      - "main"
+  # release:
+  #   types: [created]
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -16,6 +19,6 @@ jobs:
       - name: Install dependencies and build 🔧
         run: npm install
       - name: Publish package on NPM 
-        run: npm publish
+        run: npm publish --access=public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
