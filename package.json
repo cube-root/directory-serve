@@ -1,5 +1,5 @@
 {
-  "name": "serve-dir",
+  "name": "serve-file-directory",
   "version": "1.0.0",
   "description": "Command line tool to serve the directory",
   "main": "src/index.js",
