@@ -2,9 +2,10 @@
   "name": "file-sharing",
   "version": "1.0.0",
   "description": "Command line tool to serve the directory",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon src/index.js"
   },
   "keywords": [
     "file sharing",
@@ -29,5 +30,12 @@
   "bugs": {
     "url": "https://github.com/cube-root/file-sharing/issues"
   },
-  "homepage": "https://github.com/cube-root/file-sharing#readme"
+  "homepage": "https://github.com/cube-root/file-sharing#readme",
+  "dependencies": {
+    "fs-extra": "^10.1.0",
+    "yargs": "^17.6.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }
