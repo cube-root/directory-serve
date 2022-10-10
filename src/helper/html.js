@@ -11,6 +11,18 @@ const createHtmlResponse = (body)=>{
     '</html>\n'
 }
 
+
+const  uploadFileResponse = (path)=>{
+    return `<h1>Upload files to ${path} </h1>`+
+ 
+    '<form action="/" method="post" enctype="multipart/form-data">'+
+        '<input type="file" name="filetoupload">'+
+        '<input type="submit" value="Upload">'+
+    '</form><br/>'
+}
+
+
 module.exports = {
-    createHtmlResponse
+    createHtmlResponse,
+    uploadFileResponse
 }

@@ -1,7 +1,11 @@
 const send = require('send');
 const parseUrl = require('parseurl');
 const fs = require('fs-extra');
-const { appendSlash,createHtmlResponse } = require('../helper');
+const {
+    appendSlash,
+    createHtmlResponse,
+    uploadFileResponse
+} = require('../helper');
 
 const directory = (req, res, { path } = {}) => {
     let stream = send(req, parseUrl(req).pathname, { index: false, root: path });
@@ -10,6 +14,12 @@ const directory = (req, res, { path } = {}) => {
     stream.on('directory', async (res, dirPath) => {
         const directoryPath = appendSlash(dirPath);
         let htmlResponse = "";
+        /**
+         * File upload html append
+         */
+        if (fs.lstatSync(directoryPath).isDirectory()) {
+            htmlResponse += uploadFileResponse(dirPath)
+        }
         await new Promise((resolve, reject) => {
             fs.readdir(directoryPath, (err, files) => {
                 if (err) {
@@ -23,7 +33,7 @@ const directory = (req, res, { path } = {}) => {
                         htmlResponse += '<li style="margin-top: 10px;">' +
                             '<i class="fa fa-file"></i>' +
                             '<a style="margin-left: 10px; margin-bottom:10px" href="' + file + '">' + file + '</a>' +
-                            '<br/>'+
+                            '<br/>' +
                             '<div>' + '<a target="_blank" download style="margin-top: 50px; border-style: solid;" href="' + file + '">' + 'Download' + '</a>' + '</div>' +
                             '</li>'
                     } else {
