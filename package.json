@@ -33,9 +33,13 @@
   "homepage": "https://github.com/cube-root/file-sharing#readme",
   "dependencies": {
     "fs-extra": "^10.1.0",
+    "qrcode-terminal": "^0.12.0",
     "yargs": "^17.6.0"
   },
   "devDependencies": {
+    "eslint": "^8.25.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.26.0",
     "nodemon": "^2.0.20"
   }
 }

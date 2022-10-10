@@ -1,7 +1,7 @@
 const http = require('node:http');
 const yargs = require("yargs");
-const os = require('node:os');
 const fs = require('fs-extra');
+const qrcode = require('qrcode-terminal');
 const { getNetworkAddress } = require('./helper');
 
 const message = "\nUsage: sharing <directory-path>";
@@ -15,7 +15,7 @@ const options = yargs
 let path = options._[0];
 if (!path) {
     console.log('Please specify path');
-    return false;
+    return false
 }
 
 
@@ -40,3 +40,22 @@ if (isFile) {
     path = directoryPath;
 }
 
+/**
+ * SERVER
+ */
+var server = http.createServer(function onRequest(req, res) {
+    return res.writeHead(200,'test'); 
+});
+
+server.listen(options.port,()=>{
+    let message = 'Scan the QR-Code to access \'' + path + '\' directory on your phone';
+    let file = '';
+    if (isFile) {
+        message = 'Scan the QR-Code to access \'' + fileName + '\' file on your phone';
+        file = '/' + fileName;
+    }
+    const url = 'http://' + getNetworkAddress() + ':' + options.port + file;
+    console.log(url);
+    qrcode.generate(url, { small: true });
+    console.log('Press ctrl+c to stop sharing')
+})
