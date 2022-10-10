@@ -3,7 +3,7 @@ const yargs = require("yargs");
 const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
 const { getNetworkAddress } = require('./helper');
-
+const { directory } = require('./middleware')
 const message = "\nUsage: sharing <directory-path>";
 
 const options = yargs
@@ -44,10 +44,12 @@ if (isFile) {
  * SERVER
  */
 var server = http.createServer(function onRequest(req, res) {
-    return res.writeHead(200,'test'); 
+    return directory(req, res, {
+        path
+    })
 });
 
-server.listen(options.port,()=>{
+server.listen(options.port, () => {
     let message = 'Scan the QR-Code to access \'' + path + '\' directory on your phone';
     let file = '';
     if (isFile) {
