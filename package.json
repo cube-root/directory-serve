@@ -1,0 +1,33 @@
+{
+  "name": "file-sharing",
+  "version": "1.0.0",
+  "description": "Command line tool to serve the directory",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "file sharing",
+    "android",
+    "ios",
+    "mobile",
+    "cli sharing",
+    "directory sharing",
+    "file serving",
+    "directory serving",
+    "mobile file sharing",
+    "share clipboard",
+    "receive file",
+    "send file"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cube-root/file-sharing.git"
+  },
+  "author": "Abhijith v (abhijithababhijith@gmail.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cube-root/file-sharing/issues"
+  },
+  "homepage": "https://github.com/cube-root/file-sharing#readme"
+}
