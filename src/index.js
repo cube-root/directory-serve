@@ -3,7 +3,7 @@ const yargs = require("yargs");
 const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
 const { getNetworkAddress } = require('./helper');
-const { directory } = require('./middleware')
+const handler = require('./middleware')
 const message = "\nUsage: sharing <directory-path>";
 
 const options = yargs
@@ -44,7 +44,7 @@ if (isFile) {
  * SERVER
  */
 var server = http.createServer(function onRequest(req, res) {
-    return directory(req, res, {
+    return handler(req, res, {
         path
     })
 });

@@ -9,8 +9,6 @@ const {
 
 const directory = (req, res, { path } = {}) => {
     let stream = send(req, parseUrl(req).pathname, { index: false, root: path });
-
-
     stream.on('directory', async (res, dirPath) => {
         const directoryPath = appendSlash(dirPath);
         let htmlResponse = "";
@@ -48,7 +46,7 @@ const directory = (req, res, { path } = {}) => {
             })
         });
         res.setHeader('Content-Type', 'text/html; charset=UTF-8');
-        res.end(createHtmlResponse(htmlResponse));
+        return res.end(createHtmlResponse(htmlResponse));
     })
     stream.pipe(res);
 }
