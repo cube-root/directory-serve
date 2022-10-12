@@ -1,5 +1,3 @@
-#! /usr/bin/env node
-
 const http = require('node:http');
 const yargs = require("yargs");
 const fs = require('fs-extra');

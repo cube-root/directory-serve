@@ -1,6 +1,6 @@
 {
-  "name": "serve-file-directory",
-  "version": "0.0.1",
+  "name": "directory-serve",
+  "version": "1.0.2",
   "description": "Command line tool to serve the directory",
   "main": "bin/index.js",
   "scripts": {
@@ -24,6 +24,9 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cube-root/file-sharing.git"
+  },
+  "engines": {
+    "node": ">=16.0"
   },
   "bin": {
     "directory-serve": "./bin/index.js"
