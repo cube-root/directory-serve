@@ -5,7 +5,7 @@ const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
 const { getNetworkAddress } = require('../lib/helper');
 const handler = require('../lib/middleware');
-const message = "\nUsage: sharing <directory-path>";
+const message = "\n directory-serve <directory-path>";
 
 const options = yargs
     .usage(message)
