@@ -3,8 +3,8 @@ const http = require('node:http');
 const yargs = require("yargs");
 const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
-const { getNetworkAddress } = require('./helper');
-const handler = require('./middleware')
+const { getNetworkAddress } = require('../lib/helper');
+const handler = require('../lib/middleware');
 const message = "\nUsage: sharing <directory-path>";
 
 const options = yargs

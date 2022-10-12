@@ -29,7 +29,8 @@
     "node": ">=16.0"
   },
   "directories": {
-    "bin": "./bin"
+    "bin": "./bin",
+    "lib": "./lib"
   },
   "bin": {
     "directory-serve": "./bin/index.js"
