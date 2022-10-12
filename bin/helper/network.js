@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const os = require('node:os');
 
 const networkInterfaces = os.networkInterfaces();

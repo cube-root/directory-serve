@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const { directory } = require('./directory');
 const { fileUpload } = require('./file-upload');
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const formidable = require('formidable');
 const fs = require('fs-extra');
 const { appendSlash } = require('../helper');

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const createHtmlResponse = (body)=>{
     return '<!DOCTYPE html>\n' +
     '<html lang="en">\n' +

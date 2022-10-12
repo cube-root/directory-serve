@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const send = require('send');
 const parseUrl = require('parseurl');
 const fs = require('fs-extra');

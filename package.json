@@ -1,6 +1,6 @@
 {
   "name": "directory-serve",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Command line tool to serve the directory",
   "main": "bin/index.js",
   "scripts": {
@@ -27,6 +27,9 @@
   },
   "engines": {
     "node": ">=16.0"
+  },
+  "directories": {
+    "bin": "./bin"
   },
   "bin": {
     "directory-serve": "./bin/index.js"
