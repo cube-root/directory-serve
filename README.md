@@ -43,3 +43,4 @@ npx directory-serve ~/Desktop
 ## Screenshot
 
 
+![screenshot](/doc/terminal-screenshot.png?raw=true "Directory serve")
