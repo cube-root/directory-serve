@@ -19,7 +19,10 @@
     "mobile file sharing",
     "share clipboard",
     "receive file",
-    "send file"
+    "send file",
+    "static",
+    "file",
+    "server"
   ],
   "repository": {
     "type": "git",
