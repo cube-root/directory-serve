@@ -1,6 +1,6 @@
 {
   "name": "directory-serve",
-  "version": "1.0.9",
+  "version": "1.1",
   "description": "Command line tool to serve the directory",
   "main": "./bin/index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cube-root/file-sharing.git"
+    "url": "git+https://github.com/cube-root/directory-serve.git"
   },
   "engines": {
     "node": ">=16.0"
@@ -38,9 +38,9 @@
   "author": "Abhijith v (abhijithababhijith@gmail.com)",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/cube-root/file-sharing/issues"
+    "url": "https://github.com/cube-root/directory-serve/issues"
   },
-  "homepage": "https://github.com/cube-root/file-sharing#readme",
+  "homepage": "https://github.com/cube-root/directory-serve#readme",
   "dependencies": {
     "formidable": "^2.0.1",
     "fs-extra": "^10.1.0",
