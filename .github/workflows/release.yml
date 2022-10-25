@@ -1,10 +1,10 @@
 name: Publish to NPM
 on:
-  push:
-    branches:
-      - "main"
-  # release:
-  #   types: [created]
+  # push:
+  #   branches:
+  #     - "main"
+  release:
+    types: [created]
 jobs:
   build:
     runs-on: ubuntu-latest
