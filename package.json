@@ -1,7 +1,7 @@
 {
   "name": "directory-serve",
-  "version": "1.1.0",
-  "description": "Command line tool to serve the directory",
+  "version": "1.1.1",
+  "description": "Command line tool to share the directory",
   "main": "./bin/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
