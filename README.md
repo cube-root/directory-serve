@@ -33,11 +33,30 @@ Directly use the command
 ## Examples
 
 ```bash
-npx directory-serve /path-of-directory
+npx directory-serve .
 ```
 
 ```bash
 npx directory-serve ~/Desktop
+```
+
+## For Developing
+
+### prerequisite
+1. Node (>=16.0)
+
+<br/>
+clone the repo and follow the commands
+
+```bash
+git clone https://github.com/cube-root/directory-serve.git
+```
+
+```bash
+npm i
+```
+```bash
+npm run dev /path-of-directory
 ```
 
 ## Screenshot

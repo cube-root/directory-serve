@@ -60,5 +60,6 @@ server.listen(options.port, () => {
     const url = 'http://' + getNetworkAddress() + ':' + options.port + file;
     console.log(url);
     qrcode.generate(url, { small: true });
+    console.log('NOTE: Devices should be in same network')
     console.log('Press ctrl+c to stop sharing')
 })
