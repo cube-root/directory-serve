@@ -63,3 +63,5 @@ npm run dev /path-of-directory
 
 
 ![screenshot](/doc/terminal-screenshot.png?raw=true "Directory serve")
+
+![screenshot](/doc/directory-list.png?raw=true)
