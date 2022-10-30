@@ -9,6 +9,11 @@
   },
   "keywords": [
     "file sharing",
+    "http",
+    "https",
+    "cli",
+    "http-server",
+    "https-server",
     "android",
     "ios",
     "mobile",
