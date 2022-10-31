@@ -34,7 +34,7 @@
     "url": "git+https://github.com/cube-root/directory-serve.git"
   },
   "engines": {
-    "node": ">=16.0"
+    "node": ">=14.0"
   },
   "directories": {
     "bin": "./bin",

@@ -4,7 +4,7 @@ const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
 const express = require('express');
 const { getNetworkAddress } = require('../lib/helper');
-const handler = require('../lib/middleware');
+const { handler, authMiddleware } = require('../lib/middleware');
 
 const app = express();
 const yargsMessage = '\n directory-serve <directory-path>';
@@ -17,14 +17,20 @@ const options = yargs
   .option('u', {
     default: true, alias: 'uploadFile', describe: 'File upload mode', type: 'boolean',
   })
+  .options('username', {
+    default: undefined, describe: 'Client auth username', type: 'string', demandOption: false,
+  })
+  .options('password', {
+    default: undefined, describe: 'Client auth password', type: 'string', demandOption: false,
+  })
   .help(true)
   .argv;
 
-const { uploadFile } = options;
+const { uploadFile, username, password } = options;
 let path = options._[0];
 if (!path) {
   console.log('Please specify path');
-  process.exit(1);
+  process.exit();
 }
 
 /**
@@ -32,7 +38,7 @@ if (!path) {
  */
 if (!fs.existsSync(path)) {
   console.log('Directory not found');
-  process.exit(1);
+  process.exit();
 }
 
 /**
@@ -47,6 +53,12 @@ if (isFile) {
   path = directoryPath;
 }
 
+/**
+ * Auth
+ */
+app.use((req, res, next) => authMiddleware(req, res, next, {
+  username, password,
+}));
 /**
  * SERVER
  */
