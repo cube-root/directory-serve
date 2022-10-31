@@ -1,11 +1,12 @@
 #!/usr/bin/env node
-const http = require('node:http');
 const yargs = require('yargs');
 const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
+const express = require('express');
 const { getNetworkAddress } = require('../lib/helper');
 const handler = require('../lib/middleware');
 
+const app = express();
 const yargsMessage = '\n directory-serve <directory-path>';
 
 const options = yargs
@@ -49,12 +50,12 @@ if (isFile) {
 /**
  * SERVER
  */
-const server = http.createServer((req, res) => handler(req, res, {
+app.use((req, res) => handler(req, res, {
   path,
   uploadFile,
 }));
 
-server.listen(options.port, () => {
+app.listen(options.port, () => {
   let message = 'Scan the QR Code to access directory';
   let file = '';
   if (isFile) {
