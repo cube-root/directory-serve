@@ -7,7 +7,29 @@ const { getNetworkAddress } = require('../lib/helper');
 const { handler, authMiddleware } = require('../lib/middleware');
 
 const app = express();
-const yargsMessage = '\n directory-serve <directory-path>';
+const yargsMessage = `directory-serve <directory-path>
+Serve directory/file
+
+Usage : directory-serve [path] [args]
+
+Options
+-p ............. Port
+
+-u ............. Restrict upload file on client :default value is false
+
+--username ..... Client auth username
+
+
+--password ..... Client auth password
+
+* To serve a directory
+directory-serve /path-of-directory
+
+* To serve a file
+directory-serve /path-of-file
+
+
+`;
 
 const options = yargs
   .usage(yargsMessage)
