@@ -13,9 +13,13 @@ const options = yargs
   .option('p', {
     default: 8989, alias: 'port', describe: 'Change default port', type: 'integer', demandOption: false,
   })
+  .option('u', {
+    default: true, alias: 'uploadFile', describe: 'File upload mode', type: 'boolean',
+  })
   .help(true)
   .argv;
 
+const { uploadFile } = options;
 let path = options._[0];
 if (!path) {
   console.log('Please specify path');
@@ -47,6 +51,7 @@ if (isFile) {
  */
 const server = http.createServer((req, res) => handler(req, res, {
   path,
+  uploadFile,
 }));
 
 server.listen(options.port, () => {
