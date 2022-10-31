@@ -1,12 +1,35 @@
 #!/usr/bin/env node
-const http = require('node:http');
 const yargs = require('yargs');
 const fs = require('fs-extra');
 const qrcode = require('qrcode-terminal');
+const express = require('express');
 const { getNetworkAddress } = require('../lib/helper');
-const handler = require('../lib/middleware');
+const { handler, authMiddleware } = require('../lib/middleware');
 
-const yargsMessage = '\n directory-serve <directory-path>';
+const app = express();
+const yargsMessage = `directory-serve <directory-path>
+Serve directory/file
+
+Usage : directory-serve [path] [args]
+
+Options
+-p ............. Port
+
+-u ............. Restrict upload file on client :default value is false
+
+--username ..... Client auth username
+
+
+--password ..... Client auth password
+
+* To serve a directory
+directory-serve /path-of-directory
+
+* To serve a file
+directory-serve /path-of-file
+
+
+`;
 
 const options = yargs
   .usage(yargsMessage)
@@ -16,14 +39,20 @@ const options = yargs
   .option('u', {
     default: true, alias: 'uploadFile', describe: 'File upload mode', type: 'boolean',
   })
+  .options('username', {
+    default: undefined, describe: 'Client auth username', type: 'string', demandOption: false,
+  })
+  .options('password', {
+    default: undefined, describe: 'Client auth password', type: 'string', demandOption: false,
+  })
   .help(true)
   .argv;
 
-const { uploadFile } = options;
+const { uploadFile, username, password } = options;
 let path = options._[0];
 if (!path) {
   console.log('Please specify path');
-  process.exit(1);
+  process.exit();
 }
 
 /**
@@ -31,7 +60,7 @@ if (!path) {
  */
 if (!fs.existsSync(path)) {
   console.log('Directory not found');
-  process.exit(1);
+  process.exit();
 }
 
 /**
@@ -47,14 +76,20 @@ if (isFile) {
 }
 
 /**
+ * Auth
+ */
+app.use((req, res, next) => authMiddleware(req, res, next, {
+  username, password,
+}));
+/**
  * SERVER
  */
-const server = http.createServer((req, res) => handler(req, res, {
+app.use((req, res) => handler(req, res, {
   path,
   uploadFile,
 }));
 
-server.listen(options.port, () => {
+app.listen(options.port, () => {
   let message = 'Scan the QR Code to access directory';
   let file = '';
   if (isFile) {

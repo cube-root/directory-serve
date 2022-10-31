@@ -42,11 +42,13 @@ npx directory-serve /path-to-file
 
 ## Arguments
 
-| options | default |         description         |                      Example                      |
-| :-----: | :-----: | :-------------------------: | :-----------------------------------------------: |
-|    u    |  true   | Restrict upload file option | `npx directory-serve /path-of-directory -u=false` |
-|    p    |  8989   |       Change the port       | `npx directory-serve /path-of-directory -p=3000`  |
-|  help   |         |            Help             |           `npx directory-serve --help `           |
+| options  |  default  |           description           |                                         Example                                         |
+| :------: | :-------: | :-----------------------------: | :-------------------------------------------------------------------------------------: |
+|    u     |   true    |   Restrict upload file option   |                    `npx directory-serve /path-of-directory -u=false`                    |
+|    p     |   8989    |         Change the port         |                    `npx directory-serve /path-of-directory -p=3000`                     |
+|   help   |           |              Help               |                              `npx directory-serve --help `                              |
+| username | undefined |      Client auth username       |            `npx directory-serve /path-of-directory --username=my_username `             |
+| password | undefined | Client auth password (optional) | `npx directory-serve /path-of-directory --username=my_username --password=my_password ` |
 
 ## Examples
 
@@ -60,6 +62,10 @@ npx directory-serve ~/Desktop
 
 ```bash
 npx directory-serve ~/Desktop/my_image.png
+```
+
+```bash
+npx directory-serve ~/Desktop -p=3000 --username=test --password=password
 ```
 
 ## For Developing
@@ -85,6 +91,14 @@ npm run dev /path-of-directory
 
 ## Screenshot
 
+### CLI
+
 ![screenshot](/doc/terminal-screenshot.png?raw=true "Directory serve")
 
+### Client
+
 ![screenshot](/doc/directory-list.png?raw=true)
+
+### Client Auth
+
+![screenshot](/doc/basic-auth.png?raw=true)
