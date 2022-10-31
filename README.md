@@ -11,17 +11,19 @@ This is a [Node.js](https://nodejs.org/en/) module available through the
 ```bash
 $ npm install -g directory-serve
 ```
+
 ## Help
 
 ```bash
 npx directory-serve --help
 ```
+
 ## Usage
 
 After installing globally
 
 ```bash
- directory-serve /path-of-directory
+ npx directory-serve /path-of-directory
 ```
 
 or
@@ -30,6 +32,12 @@ Directly use the command
 
 ```bash
  npx directory-serve /path-of-directory
+```
+
+or
+
+```bash
+npx directory-serve /path-to-file
 ```
 
 ## Arguments
@@ -48,6 +56,10 @@ npx directory-serve .
 
 ```bash
 npx directory-serve ~/Desktop
+```
+
+```bash
+npx directory-serve ~/Desktop/my_image.png
 ```
 
 ## For Developing
