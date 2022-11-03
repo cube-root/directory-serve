@@ -1,5 +1,7 @@
 # Directory Serve
 
+<a href="https://www.producthunt.com/posts/directory-serve?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-directory&#0045;serve" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=365677&theme=light" alt="Directory&#0032;Serve - Open&#0032;source&#0032;CLI&#0032;to&#0032;send&#0032;and&#0032;receive&#0032;file | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
+
 Directory serve is a CLI library for sending and receiving a file from your android and IOS devices.
 
 ## Installation
@@ -23,7 +25,7 @@ npx directory-serve --help
 After installing globally
 
 ```bash
- npx directory-serve /path-of-directory
+ directory-serve /path-of-directory
 ```
 
 or
