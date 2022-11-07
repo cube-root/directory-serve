@@ -96,13 +96,13 @@ npm run dev /path-of-directory
 
 ### CLI
 
-![screenshot](/doc/terminal-screenshot.png?raw=true "Directory serve")
+![screenshot](/docs/terminal-screenshot.png?raw=true "Directory serve")
 
 ### Client
 
-![screenshot](/doc/directory-list.png?raw=true)
-![screenshot](/doc/browser_with_remove.png?raw=true)
+![screenshot](/docs/directory-list.png?raw=true)
+![screenshot](/docs/browser_with_remove.png?raw=true)
 
 ### Client Auth
 
-![screenshot](/doc/basic-auth.png?raw=true)
+![screenshot](/docs/basic-auth.png?raw=true)
