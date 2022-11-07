@@ -91,18 +91,22 @@ npm i
 ```bash
 npm run dev /path-of-directory
 ```
+## For Contributing
+
+[Contribution Guide](/docs/CONTRIBUTING.MD)
+
 
 ## Screenshot
 
 ### CLI
 
-![screenshot](/docs/terminal-screenshot.png?raw=true "Directory serve")
+![screenshot](/docs/screenshots/terminal-screenshot.png?raw=true "Directory serve")
 
 ### Client
 
-![screenshot](/docs/directory-list.png?raw=true)
-![screenshot](/docs/browser_with_remove.png?raw=true)
+![screenshot](/docs/screenshots/directory-list.png?raw=true)
+![screenshot](/docs/screenshots/browser_with_remove.png?raw=true)
 
 ### Client Auth
 
-![screenshot](/docs/basic-auth.png?raw=true)
+![screenshot](/docs/screenshots/basic-auth.png?raw=true)
