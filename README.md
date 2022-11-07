@@ -51,6 +51,7 @@ npx directory-serve /path-to-file
 |   help   |           |              Help               |                              `npx directory-serve --help `                              |
 | username | undefined |      Client auth username       |            `npx directory-serve /path-of-directory --username=my_username `             |
 | password | undefined | Client auth password (optional) | `npx directory-serve /path-of-directory --username=my_username --password=my_password ` |
+|  delete  |   false   |      To delete file/folder      |                 `npx directory-serve /path-of-directory --delete=true`                  |
 
 ## Examples
 
@@ -100,6 +101,7 @@ npm run dev /path-of-directory
 ### Client
 
 ![screenshot](/doc/directory-list.png?raw=true)
+![screenshot](/doc/browser_with_remove.png?raw=true)
 
 ### Client Auth
 
