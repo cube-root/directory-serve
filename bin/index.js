@@ -22,6 +22,7 @@ Options
 
 --password ..... Client auth password
 
+--delete   ..... Delete file/folder
 * To serve a directory
 directory-serve /path-of-directory
 
@@ -45,10 +46,15 @@ const options = yargs
   .options('password', {
     default: undefined, describe: 'Client auth password', type: 'string', demandOption: false,
   })
+  .options('delete', {
+    default: false, alias: 'deleteFile', describe: 'Delete file/folder', type: 'boolean', demandOption: false,
+  })
   .help(true)
   .argv;
 
-const { uploadFile, username, password } = options;
+const {
+  uploadFile, username, password, deleteFile,
+} = options;
 let path = options._[0];
 if (!path) {
   console.log('Please specify path');
@@ -87,6 +93,7 @@ app.use((req, res, next) => authMiddleware(req, res, next, {
 app.use((req, res) => handler(req, res, {
   path,
   uploadFile,
+  deleteFile,
 }));
 
 app.listen(options.port, () => {
