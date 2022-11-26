@@ -75,7 +75,7 @@ npx directory-serve ~/Desktop -p=3000 --username=test --password=password
 
 ### prerequisite
 
-1. Node (>=14.0)
+1. Node (>=12.0)
 
 <br/>
 clone the repo and follow the commands
