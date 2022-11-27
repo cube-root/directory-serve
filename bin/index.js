@@ -23,6 +23,8 @@ Options
 --password ..... Client auth password
 
 --delete   ..... Delete file/folder
+
+--debug    ..... Debug mode
 * To serve a directory
 directory-serve /path-of-directory
 
@@ -35,25 +37,47 @@ directory-serve /path-of-file
 const options = yargs
   .usage(yargsMessage)
   .option('p', {
-    default: 8989, alias: 'port', describe: 'Change default port', type: 'integer', demandOption: false,
+    default: 8989,
+    alias: 'port',
+    describe: 'Change default port',
+    type: 'integer',
+    demandOption: false,
   })
   .option('u', {
-    default: true, alias: 'uploadFile', describe: 'File upload mode', type: 'boolean',
+    default: true,
+    alias: 'uploadFile',
+    describe: 'File upload mode',
+    type: 'boolean',
   })
   .options('username', {
-    default: undefined, describe: 'Client auth username', type: 'string', demandOption: false,
+    default: undefined,
+    describe: 'Client auth username',
+    type: 'string',
+    demandOption: false,
   })
   .options('password', {
-    default: undefined, describe: 'Client auth password', type: 'string', demandOption: false,
+    default: undefined,
+    describe: 'Client auth password',
+    type: 'string',
+    demandOption: false,
   })
   .options('delete', {
-    default: false, alias: 'deleteFile', describe: 'Delete file/folder', type: 'boolean', demandOption: false,
+    default: false,
+    alias: 'deleteFile',
+    describe: 'Delete file/folder',
+    type: 'boolean',
+    demandOption: false,
   })
-  .help(true)
-  .argv;
+  .options('debug', {
+    default: false,
+    describe: 'Debug mode',
+    type: 'boolean',
+    demandOption: false,
+  })
+  .help(true).argv;
 
 const {
-  uploadFile, username, password, deleteFile,
+  uploadFile, username, password, deleteFile, debug,
 } = options;
 let path = options._[0];
 if (!path) {
@@ -85,7 +109,8 @@ if (isFile) {
  * Auth
  */
 app.use((req, res, next) => authMiddleware(req, res, next, {
-  username, password,
+  username,
+  password,
 }));
 /**
  * SERVER
@@ -94,6 +119,7 @@ app.use((req, res) => handler(req, res, {
   path,
   uploadFile,
   deleteFile,
+  debug,
 }));
 
 app.listen(options.port, () => {
