@@ -100,8 +100,9 @@ if (!fs.existsSync(path)) {
 const isFile = fs.lstatSync(path).isFile();
 let fileName;
 if (isFile) {
-  const directoryPath = path.substring(0, path.lastIndexOf('/') + 1);
-  fileName = path.substring(path.lastIndexOf('/') + 1, path.length);
+  const index = path.lastIndexOf('/');
+  const directoryPath = path.substring(0, index + 1);
+  fileName = path.substring(index, path.length);
   path = directoryPath;
 }
 
