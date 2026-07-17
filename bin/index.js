@@ -74,6 +74,21 @@ const options = yargs
     type: 'boolean',
     demandOption: false,
   })
+  .options('max-upload-mb', {
+    default: 100,
+    describe: 'Maximum size of each uploaded file in MB',
+    type: 'number',
+  })
+  .options('allowed-types', {
+    default: '',
+    describe: 'Comma-separated allowed file extensions (example: jpg,pdf,zip)',
+    type: 'string',
+  })
+  .options('upload-rate-limit', {
+    default: 30,
+    describe: 'Maximum upload requests per client per minute',
+    type: 'integer',
+  })
   .help(true).argv;
 
 const {
@@ -120,6 +135,9 @@ app.use((req, res) => handler(req, res, {
   uploadFile,
   deleteFile,
   debug,
+  maxUploadSize: options.maxUploadMb * 1024 * 1024,
+  allowedTypes: options.allowedTypes.split(',').map((type) => type.trim().toLowerCase()).filter(Boolean),
+  uploadRateLimit: options.uploadRateLimit,
 }));
 
 app.listen(options.port, () => {

@@ -2,7 +2,8 @@
 
 <a href="https://www.producthunt.com/posts/directory-serve?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-directory&#0045;serve" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=365677&theme=light" alt="Directory&#0032;Serve - Open&#0032;source&#0032;CLI&#0032;to&#0032;send&#0032;and&#0032;receive&#0032;file | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
-Directory serve is a CLI library for sending and receiving a file from your android and IOS devices.
+Directory Serve is a CLI tool for securely browsing, sending, and receiving files
+between computers, Android devices, and iOS devices on the same network.
 
 ## Installation
 
@@ -11,86 +12,158 @@ This is a [Node.js](https://nodejs.org/en/) module available through the
 [`npm install` command](https://docs.npmjs.com/getting-started/installing-npm-packages-locally):
 
 ```bash
-$ npm install -g directory-serve
+npm install --global directory-serve
 ```
 
-## Help
+## Quick start
 
 ```bash
-npx directory-serve --help
+directory-serve /path/to/directory
 ```
 
-## Usage
-
-After installing globally
+Without a global installation:
 
 ```bash
- directory-serve /path-of-directory
+npx directory-serve /path/to/directory
 ```
 
-or
-
-Directly use the command
+Share one file:
 
 ```bash
- npx directory-serve /path-of-directory
+npx directory-serve /path/to/file.pdf
 ```
 
-or
+The command prints a local URL and QR code. Open the URL on a device connected
+to the same network.
 
-```bash
-npx directory-serve /path-to-file
+## Command reference
+
+```text
+directory-serve <path> [options]
 ```
 
-## Arguments
+| Option | Default | Description |
+| --- | --- | --- |
+| `-p`, `--port <number>` | `8989` | HTTP port used by the server. |
+| `-u`, `--uploadFile <boolean>` | `true` | Enable or disable uploads. Use `--uploadFile=false` for read-only sharing. |
+| `--username <name>` | none | Require HTTP Basic Authentication with this username. |
+| `--password <password>` | none | Password used with `--username`. |
+| `--delete <boolean>` | `false` | Allow clients to remove files and folders. |
+| `--max-upload-mb <number>` | `100` | Maximum size of each uploaded file in megabytes. |
+| `--allowed-types <extensions>` | all | Comma-separated upload extension allowlist without dots. |
+| `--upload-rate-limit <number>` | `30` | Maximum upload requests per client per minute. |
+| `--debug <boolean>` | `false` | Print additional diagnostic information. |
+| `--help` | — | Display command help. |
+| `--version` | — | Display the installed version. |
 
-| options  |  default  |           description           |                                         Example                                         |
-| :------: | :-------: | :-----------------------------: | :-------------------------------------------------------------------------------------: |
-|    u     |   true    |   Restrict upload file option   |                    `npx directory-serve /path-of-directory -u=false`                    |
-|    p     |   8989    |         Change the port         |                    `npx directory-serve /path-of-directory -p=3000`                     |
-|   help   |           |              Help               |                              `npx directory-serve --help `                              |
-| username | undefined |      Client auth username       |            `npx directory-serve /path-of-directory --username=my_username `             |
-| password | undefined | Client auth password (optional) | `npx directory-serve /path-of-directory --username=my_username --password=my_password ` |
-|  delete  |   false   |      To delete file/folder      |                 `npx directory-serve /path-of-directory --delete=true`                  |
-|  debug   |   false   |           Debug mode            |           `npx directory-serve /path-of-directory --delete=true --debug=true`           |
+Boolean options accept forms such as `--delete`, `--delete=true`, and
+`--uploadFile=false`.
 
-## Examples
+## Command examples
+
+Share the current directory:
 
 ```bash
 npx directory-serve .
 ```
 
-```bash
-npx directory-serve ~/Desktop
-```
+Use a different port:
 
 ```bash
-npx directory-serve ~/Desktop/my_image.png
+npx directory-serve ~/Desktop --port 3000
 ```
 
+Create a read-only share with uploads and deletion disabled:
+
 ```bash
-npx directory-serve ~/Desktop -p=3000 --username=test --password=password
+npx directory-serve ~/Desktop --uploadFile=false
 ```
+
+Allow clients to upload and delete content:
+
+```bash
+npx directory-serve ~/Desktop --uploadFile=true --delete=true
+```
+
+Require a username and password:
+
+```bash
+npx directory-serve ~/Desktop --username test --password 'a-strong-password'
+```
+
+Limit each uploaded file to 25 MB:
+
+```bash
+npx directory-serve ~/Desktop --max-upload-mb 25
+```
+
+Only accept images and PDF documents:
+
+```bash
+npx directory-serve ~/Desktop --allowed-types jpg,jpeg,png,webp,pdf
+```
+
+Limit each client to ten upload requests per minute:
+
+```bash
+npx directory-serve ~/Desktop --upload-rate-limit 10
+```
+
+Combine authentication and all upload safeguards:
+
+```bash
+npx directory-serve ~/Desktop \
+  --username team \
+  --password 'a-strong-password' \
+  --max-upload-mb 50 \
+  --allowed-types jpg,jpeg,png,pdf,zip \
+  --upload-rate-limit 10
+```
+
+Enable diagnostics while using another port:
+
+```bash
+npx directory-serve ~/Desktop --port 3000 --debug=true
+```
+
+Display help or the installed version:
+
+```bash
+npx directory-serve --help
+npx directory-serve --version
+```
+
+## Browser features
+
+- Search and filter the current directory.
+- Sort items by name, modification date, size, or type.
+- Switch between list and grid layouts.
+- Upload multiple files with queue and progress feedback.
+- View current-folder size, item count, and upload limit.
+- Use light mode by default or manually switch to persistent dark mode.
+
+Search operates on the currently open folder. Clear the search field to restore
+all items; the selected file/folder filter remains active until it is changed to
+**All items**.
 
 ## For Developing
 
-### prerequisite
+### Prerequisites
 
 1. Node (>=12.0)
 
-<br/>
-clone the repo and follow the commands
+Clone the repository and install its dependencies:
 
 ```bash
 git clone https://github.com/cube-root/directory-serve.git
 ```
 
 ```bash
-npm i
+npm install
 ```
 
 ```bash
-npm run dev /path-of-directory
+npm run dev -- /path/to/directory
 ```
 
 ## For Contributing
